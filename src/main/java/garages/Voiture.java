@@ -82,6 +82,7 @@ public class Voiture {
 	 */
 	public void imprimeStationnements(PrintStream out) {
 		// TODO: Implémenter cette méthode
+		// Utiliser les méthodes toString() de Garage et Stationnement
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 

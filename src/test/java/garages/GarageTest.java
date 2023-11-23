@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class GarageTest {
+class GarageTest {
 
 	private Garage g1, g2;
 	private Voiture v1;
@@ -22,7 +22,7 @@ public class GarageTest {
 	}
 
 	@Test
-	public void lesVoituresSontBienInitialisees() {
+	void lesVoituresSontBienInitialisees() {
 		// Given: une voiture après initialisation
 		// Then: la voiture n'est pas dans un garage
 		assertFalse(v1.estDansUnGarage());
@@ -31,7 +31,7 @@ public class GarageTest {
 	}
 
 	@Test
-	public void entrerAuGarageChangeGarageVisites() throws Exception {
+	void entrerAuGarageChangeGarageVisites() throws Exception {
 		// Given: une voiture après initialisation
 		// When: On fait entrer la voiture au garage g1
 		v1.entreAuGarage(g1);
@@ -42,7 +42,7 @@ public class GarageTest {
 	}
 
 	@Test
-	public void sortirDuGarageChangeGarageVisites() throws Exception {
+	void sortirDuGarageChangeGarageVisites() throws Exception {
 		// Given: une voiture après initialisation
 		// When: On fait entrer puis sortir la voiture du garage g1
 		v1.entreAuGarage(g1);
@@ -54,7 +54,7 @@ public class GarageTest {
 	}
 
 	@Test
-	public void pasDeDoubleSortie() throws Exception {
+	void pasDeDoubleSortie() throws Exception {
 		// Given: une voiture après initialisation
 		// When: On la fait entrer puis sortir la voiture du garage g1
 		v1.entreAuGarage(g1);
@@ -72,7 +72,7 @@ public class GarageTest {
 	}
 
 	@Test
-	public void pasDeDoubleEntree() throws Exception {
+	void pasDeDoubleEntree() throws Exception {
 		// Given: une voiture après initialisation
 		// When: On fait entrer la voiture au garage g1
 		v1.entreAuGarage(g1);
@@ -97,7 +97,7 @@ public class GarageTest {
 	 * @throws Exception 
 	 */
 	@Test
-	public void testCorrectPrintFormat() throws Exception {
+	void testCorrectPrintFormat() throws Exception {
 		v1.entreAuGarage(g1);
 		v1.sortDuGarage();
 		v1.entreAuGarage(g2);

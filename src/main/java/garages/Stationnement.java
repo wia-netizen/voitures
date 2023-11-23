@@ -38,6 +38,7 @@ public class Stationnement {
 	}
 
 	public boolean estEnCours() {
+		// Le stationnement est en cours si on ne connait pas la date de fin
 		return (fin == null);
 	}
 
@@ -45,9 +46,8 @@ public class Stationnement {
 	public String toString() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy");
 		return String.format("Stationnement{ entree=%s, %s }",
-			dateFormat.format(entree),
-			estEnCours() ? "en cours" : "sortie=" + dateFormat.format(fin)
-		);
+				dateFormat.format(entree),
+				estEnCours() ? "en cours" : "sortie=" + dateFormat.format(fin));
 	}
 
 }

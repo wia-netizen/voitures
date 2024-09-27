@@ -1,24 +1,20 @@
 package garages;
 
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
+
 import java.io.PrintStream;
 import java.util.*;
 
+@RequiredArgsConstructor
+@ToString
 public class Voiture {
 
-	private final String immatriculation;
+	@Getter @NonNull private final String immatriculation;
+	@ToString.Exclude // On ne veut pas afficher les stationnements dans toString
 	private final List<Stationnement> myStationnements = new LinkedList<>();
-
-	public Voiture(String i) {
-		if (null == i) {
-			throw new IllegalArgumentException("Une voiture doit avoir une immatriculation");
-		}
-
-		immatriculation = i;
-	}
-
-	public String getImmatriculation() {
-		return immatriculation;
-	}
 
 	/**
 	 * Fait rentrer la voiture au garage
@@ -78,7 +74,7 @@ public class Voiture {
 	 *		Stationnement{ entree=28/01/2019, sortie=28/01/2019 }
 	 * </pre>
 	 *
-	 * @param out l'endroit où imprimer (ex: System.out)
+	 * @param out l'endroit où imprimer (ex: System.out pour imprimer dans la console)
 	 */
 	public void imprimeStationnements(PrintStream out) {
 		// TODO: Implémenter cette méthode

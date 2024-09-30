@@ -15,7 +15,7 @@ class GarageTest {
 	private Voiture voitureISIS;
 
 	@BeforeEach
-	public void setUp() throws Exception {
+	public void setUp() throws NullPointerException {
 		voitureISIS = new Voiture("123 XX 456");
 		garageCastres = new Garage("ISIS Castres");
 		garageAlbi = new Garage("Universite Champollion Albi");
@@ -65,7 +65,7 @@ class GarageTest {
 			// Then: on doit avoir une exception
 			// Si on arrive ici, il n'y a pas eu d'exception, échec
 			fail();
-		} catch (Exception e) {
+		} catch (IllegalStateException e) {
 			// Si on arrive ici, il y a eu une exception, c'est ce qui est attendu
 		}
 	}
@@ -79,13 +79,14 @@ class GarageTest {
 			voitureISIS.entreAuGarage(garageAlbi); // Que doit-il se passer ?
 			// Si on arrive ici, il n'y a pas eu d'exception, échec
 			fail();
-		} catch (Exception e) {
+		} catch (IllegalStateException e) {
 			// Si on arrive ici, il y a eu une exception, c'est ce qui est attendu
 		}
 	}
 
 	/**
-	 * Exemple de test qui vérifie un format d'impression correct.<br>`
+	 * Exemple de test qui vérifie un format d'impression correct.<br>
+	 * `
 	 * La méthode "imprimeStationnements" est conçue pour être testable :<br>
 	 * Elle prend un paramètre "PrintStream" qui indique où on doit imprimer
 	 * (Injection de dépendance).<br>
@@ -93,7 +94,8 @@ class GarageTest {
 	 * directement dans la console (System.out)<br>
 	 * On peut ensuite vérifier que le contenu de la chaîne générée est conforme au
 	 * résultat attendu.
-	 * @throws Exception 
+	 * 
+	 * @throws Exception
 	 */
 	@Test
 	void testCorrectPrintFormat() throws Exception {
@@ -108,29 +110,29 @@ class GarageTest {
 		PrintStream ps = new PrintStream(os);
 		// On imprime dans ps
 		voitureISIS.imprimeStationnements(ps);
-		
+
 		// On récupère le résultat de l'impression
 		String output = os.toString("UTF8");
 
 		// Le garage g1 doit apparaître une fois
 		assertEquals(1, countSubstring(output, garageCastres.toString()),
-                         garageCastres.toString() + " doit apparaître une fois");
+				garageCastres.toString() + " doit apparaître une fois");
 		// Le garage g2 doit apparaître une fois
-		assertEquals(1,	countSubstring(output, garageAlbi.toString()),
-                    garageAlbi.toString() + " doit apparaître une fois");
+		assertEquals(1, countSubstring(output, garageAlbi.toString()),
+				garageAlbi.toString() + " doit apparaître une fois");
 
-		assertEquals(3,	countSubstring(output, "Stationnement"),
-                        "On doit imprimer trois stationnements"	);
+		assertEquals(3, countSubstring(output, "Stationnement"),
+				"On doit imprimer trois stationnements");
 
-		assertEquals(1,	countSubstring(output, "en cours"),
-                        "Il doit y avoir un seul stationnement en cours");
+		assertEquals(1, countSubstring(output, "en cours"),
+				"Il doit y avoir un seul stationnement en cours");
 	}
 
 	/**
 	 * Une méthode utilitaire pour le test ci-dessus
 	 * Compter le nombre d'occurrences d'une sous-chaîne dans une chaîne
 	 *
-	 * @param string String to look for substring in.
+	 * @param string    String to look for substring in.
 	 * @param substring Sub-string to look for.
 	 * @return Count of substrings in string.
 	 */

@@ -1,70 +1,54 @@
 package garages;
 
 import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 /**
- * Représente un garage où des voitures peuvent stationner.
- * Cette classe utilise Lombok pour générer automatiquement certaines méthodes.
+ * Représente un garage où les voitures peuvent être stationnées.
  */
-
-// Génère un constructeur avec les arguments requis (champs marqués avec @NonNull ou final)
-@RequiredArgsConstructor
-// Génère automatiquement des méthodes getter pour tous les champs
-@Getter
-// Génère une méthode toString()
-@ToString
+@Getter // Génère les getters pour tous les champs
+@ToString // Génère la méthode toString()
+@RequiredArgsConstructor // Génère un constructeur avec tous les champs "final" ou annotés avec @NonNull
 public class Garage {
-	// Marque le champ comme non-null, lançant une NullPointerException si null est passé
+
+	/**
+	 * Le nom du garage.
+	 * Ce champ ne peut pas être null.
+	 */
 	@NonNull
-	// Génère une méthode setter pour ce champ
-	@Setter
+	@Setter // Génère le setter pour ce champ
 	private String name;
 
-/* Lombok va générer automatiquement le code suivant :
+	/**
+	 * Crée un nouveau garage avec le nom spécifié.
+	 * 
+	 * @param name le nom du garage (ne peut pas être null)
+	 * @throws NullPointerException si le nom est null
+	 */
+	// Le constructeur est généré par @RequiredArgsConstructor
 
-	public Garage(String s) {
-		if (null == s) {
-			throw new NullPointerException("name is null");
-		}
-		name = s;
-	}
+	/**
+	 * Retourne le nom du garage.
+	 * 
+	 * @return le nom du garage
+	 */
+	// La méthode getName() est générée par @Getter
 
-	public String getName() {
-		return name;
-	}
+	/**
+	 * Modifie le nom du garage.
+	 * 
+	 * @param name le nouveau nom du garage (ne peut pas être null)
+	 * @throws NullPointerException si le nouveau nom est null
+	 */
+	// La méthode setName() est générée par @Setter
 
-	public void setName(String name) {
-		if (null == name) {
-			throw new NullPointerException("name is null");
-		}
-
-		this.name = name;
-	}
-
-	@Override
-	public String toString() {
-		return "Garage " + name;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		if (null == name) {
-			throw new IllegalArgumentException("name is null");
-		}
-
-		this.name = name;
-	}
-
-	@Override
-	public String toString() {
-		return "Garage " + name;
-	}
-*/
+	/**
+	 * Retourne une représentation sous forme de chaîne de caractères du garage.
+	 * 
+	 * @return une chaîne de caractères représentant le garage, incluant son nom
+	 */
+	// La méthode toString() est générée par @ToString
 }

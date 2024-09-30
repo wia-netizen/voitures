@@ -2,54 +2,59 @@ package garages;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Représente un stationnement d'une voiture dans un garage.
- * Cette classe utilise Lombok pour générer automatiquement certaines méthodes.
  */
-@RequiredArgsConstructor
 @Getter
+@RequiredArgsConstructor // génère un constructeur avec un paramètre pour chaque champ @NonNull ou final
 public class Stationnement {
 
-	/** La voiture qui est stationnée. */
-	private final Voiture myCar;
+	/**
+	 * La voiture qui est stationnée.
+	 */
+	private final Voiture vehiculeRecu;
 
-	/** Le garage où la voiture est stationnée. */
-	private final Garage myGarage;
+	/**
+	 * Le garage où la voiture est stationnée.
+	 */
+	private final Garage garageVisite;
 
-	/** La date d'entrée du stationnement. */
+	/**
+	 * La date d'entrée du véhicule dans le garage.
+	 */
 	private final Date entree = new Date(); // Aujourd'hui
 
-	/** La date de fin du stationnement, null si le stationnement est en cours. */
+	/**
+	 * La date de sortie du véhicule du garage. Null si le véhicule est toujours
+	 * dans le garage.
+	 */
 	private Date fin;
 
 	/**
-	 * Termine le stationnement en cours.
-	 * Cette méthode enregistre la date de fin du stationnement.
+	 * Termine le stationnement en enregistrant la date de fin.
 	 */
 	public void terminer() {
-		// On enregistre la date de fin du stationnement
-		fin = new Date(); // Date du jour
+		fin = new Date();
 	}
 
 	/**
 	 * Vérifie si le stationnement est en cours.
-	 * 
+	 *
 	 * @return true si le stationnement est en cours, false sinon
 	 */
 	public boolean estEnCours() {
-		// Le stationnement est en cours si on ne connaît pas la date de fin
 		return (fin == null);
 	}
 
 	/**
-	 * Retourne une représentation textuelle du stationnement.
-	 * 
-	 * @return Une chaîne représentant l'état du stationnement, incluant la date d'entrée
+	 * Retourne une représentation textuelle du statut du stationnement.
+	 *
+	 * @return Une chaîne représentant l'état du stationnement, incluant la date
+	 *         d'entrée
 	 *         et soit "en cours" soit la date de sortie
 	 */
 	@Override
@@ -59,5 +64,4 @@ public class Stationnement {
 				dateFormat.format(entree),
 				estEnCours() ? "en cours" : "sortie=" + dateFormat.format(fin));
 	}
-
 }

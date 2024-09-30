@@ -10,9 +10,14 @@ import java.util.*;
 
 @RequiredArgsConstructor
 @ToString
+/**
+ * Représente une voiture qui peut être stationnée dans des garages.
+ */
 public class Voiture {
 
-	@Getter @NonNull private final String immatriculation;
+	@Getter
+	@NonNull
+	private final String immatriculation;
 	@ToString.Exclude // On ne veut pas afficher les stationnements dans toString
 	private final List<Stationnement> myStationnements = new LinkedList<>();
 
@@ -21,9 +26,9 @@ public class Voiture {
 	 * Précondition : la voiture ne doit pas être déjà dans un garage
 	 *
 	 * @param g le garage où la voiture va stationner
-	 * @throws java.lang.Exception Si déjà dans un garage
+	 * @throws IllegalStateException Si déjà dans un garage
 	 */
-	public void entreAuGarage(Garage g) throws Exception {
+	public void entreAuGarage(Garage g) throws IllegalStateException {
 		// Et si la voiture est déjà dans un garage ?
 
 		Stationnement s = new Stationnement(this, g);
@@ -34,9 +39,9 @@ public class Voiture {
 	 * Fait sortir la voiture du garage
 	 * Précondition : la voiture doit être dans un garage
 	 *
-	 * @throws java.lang.Exception si la voiture n'est pas dans un garage
+	 * @throws IllegalStateException si la voiture n'est pas dans un garage
 	 */
-	public void sortDuGarage() throws Exception {
+	public void sortDuGarage() throws IllegalStateException {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 		// TODO: Implémenter cette méthode
 		// Trouver le dernier stationnement de la voiture
@@ -44,6 +49,8 @@ public class Voiture {
 	}
 
 	/**
+	 * Calcule l'ensemble des garages visités par cette voiture
+	 * 
 	 * @return l'ensemble des garages visités par cette voiture
 	 */
 	public Set<Garage> garagesVisites() {
@@ -52,6 +59,8 @@ public class Voiture {
 	}
 
 	/**
+	 * Détermine si la voiture est actuellement dans un garage
+	 * 
 	 * @return vrai si la voiture est dans un garage, faux sinon
 	 */
 	public boolean estDansUnGarage() {
@@ -74,7 +83,8 @@ public class Voiture {
 	 *		Stationnement{ entree=28/01/2019, sortie=28/01/2019 }
 	 * </pre>
 	 *
-	 * @param out l'endroit où imprimer (ex: System.out pour imprimer dans la console)
+	 * @param out l'endroit où imprimer (ex: System.out pour imprimer dans la
+	 *            console)
 	 */
 	public void imprimeStationnements(PrintStream out) {
 		// TODO: Implémenter cette méthode

@@ -53,9 +53,8 @@ public class Stationnement {
 	/**
 	 * Retourne une représentation textuelle du statut du stationnement.
 	 *
-	 * @return Une chaîne représentant l'état du stationnement, incluant la date
-	 *         d'entrée
-	 *         et soit "en cours" soit la date de sortie
+	 * @return Une chaîne représentant l'état du stationnement, incluant la date d'entrée
+	 *         et soit "en cours" soit la date de sortie.
 	 */
 	@Override
 	public String toString() {

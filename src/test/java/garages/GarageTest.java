@@ -78,7 +78,7 @@ class GarageTest {
 		try {
 			voitureISIS.entreAuGarage(garageAlbi); // Que doit-il se passer ?
 			// Si on arrive ici, il n'y a pas eu d'exception, échec
-			fail();
+			fail("On ne doit pas pouvoir entrer la voiture dans un autre garage sans en sortir d'abord.");
 		} catch (IllegalStateException e) {
 			// Si on arrive ici, il y a eu une exception, c'est ce qui est attendu
 		}

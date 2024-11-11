@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.univ-jfc.bastide</groupId>
     <artifactId>GarageMavenEnonce</artifactId>
@@ -7,16 +8,16 @@
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-         <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
 
-            <!-- On configure le plugin permettant d'exécuter directement le programme avec maven -->            
-            <!-- On pourra exécuter le programme avec : 'mvn exec:java' -->
+        <!-- On configure le plugin permettant d'exécuter directement le programme avec maven -->
+        <!-- On pourra exécuter le programme avec : 'mvn exec:java' -->
         <exec.mainClass>garages.Main</exec.mainClass>
-    </properties>    
-        
+    </properties>
+
     <build>
-        
+
         <plugins>
             <!-- Plugin pour exécuter les tests unitaires -->
             <!-- Pour lancer les tests : mvn test -->
@@ -24,7 +25,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
             </plugin>
-            
+
             <!-- Plugin pour la couverture de code avec JaCoCo -->
             <!-- Pour générer le rapport de couverture : mvn verify -->
             <plugin>
@@ -53,7 +54,7 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
             <!-- Plugin pour générer la documentation Javadoc -->
             <!-- Pour générer la Javadoc : mvn javadoc:javadoc -->
             <plugin>
@@ -62,12 +63,12 @@
                 <version>3.10.0</version>
                 <configuration>
                 </configuration>
-            </plugin>            
+            </plugin>
         </plugins>
-    </build>    
+    </build>
 
     <dependencies>
-            <!-- Dépendances pour JUnit 5 -->
+        <!-- Dépendances pour JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
